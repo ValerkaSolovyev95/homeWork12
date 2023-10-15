@@ -1,8 +1,6 @@
 package github.tests;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.withText;
@@ -14,7 +12,6 @@ public class StepsTest extends BaseTest {
 
     @Test
     void testLambdaStep() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открываем главную страницу", () -> open(""));
         step("Ищем репозиторий " + TestData.REPOSITORY, () -> {
             TestData.searchButton.click();
@@ -30,7 +27,6 @@ public class StepsTest extends BaseTest {
 
     @Test
     void testAnnotatedStep() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
         steps.openMainPage();
         steps.searchForRepository(TestData.REPOSITORY);
