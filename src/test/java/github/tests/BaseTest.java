@@ -20,7 +20,6 @@ public class BaseTest {
     static void setup() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://github.com";
-        Configuration.holdBrowserOpen = true;
     }
 
     @AfterEach
