@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id'io.qameta.allure' version '2.11.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    version.set("2.19.0")
+    adapter {
+        allureJavaVersion.set("2.19.0")
+        aspectjVersion.set("1.9.5")
+
+        autoconfigureListeners.set(true)
+        aspectjWeaver.set(true)
+
+        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.24.0")
+                enabled.set(true)
+                autoconfigureListeners.set(true)
+            }
+        }
+    }
+}
+
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-api:5.10.0',
+            'com.codeborne:selenide:6.19.0',
+            'io.qameta.allure:allure-selenide:2.24.0',
+            'org.aspectj:aspectjweaver:1.9.20.1'
+    )
+
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.10.0')
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
