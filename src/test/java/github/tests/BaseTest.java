@@ -28,6 +28,7 @@ public class BaseTest {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://github.com";
         Configuration.remote = System.getProperty("remote_url");
+        Configuration.browser = System.getProperty("browser", "chrome");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
